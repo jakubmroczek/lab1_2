@@ -1,0 +1,71 @@
+package pl.com.bottega.ecommerce.sharedkernel;
+
+import org.junit.Test;
+
+import java.util.Currency;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.*;
+
+public class MoneyTest {
+
+    @Test
+    public void testMultiplyBy() {
+        Money instance = new Money(10);
+        Money expectedResult = new Money(1_000);
+
+        assertThat(expectedResult, equalTo(instance.multiplyBy(100)));
+    }
+
+    @Test
+    public void testAdd() {
+        Money lhs = new Money(10);
+        Money rhs = new Money(12);
+
+        Money expectedResult = new Money(22);
+        Money result = lhs.add(rhs);
+
+        assertThat(expectedResult, equalTo(result));
+    }
+
+    @Test
+    public void testSubtract() {
+        Money lhs = new Money(15);
+        Money rhs = new Money(8);
+
+        Money expectedResult = new Money(7);
+        Money result = lhs.subtract(rhs);
+
+        assertThat(expectedResult, equalTo(result));
+    }
+
+    @Test
+    public void testGetCurrencyCode() {
+        Money instance = new Money(10);
+        assertThat(instance.getCurrencyCode(), equalTo(Money.DEFAULT_CURRENCY.getCurrencyCode()));
+    }
+
+    @Test
+    public void testGreaterThan() {
+        Money lhs = new Money(8);
+        Money rhs = new Money(7);
+
+        assertThat(lhs.greaterThan(rhs), equalTo(true));
+    }
+
+    @Test
+    public void testLessThan() {
+        Money lhs =  Money.ZERO;
+        Money rhs = new Money(1);
+
+        assertThat(lhs.lessThan(rhs), equalTo(true));
+    }
+
+    @Test
+    public void testLessOrEquals() {
+        Money lhs = new Money(1);
+        Money rhs = new Money(1);
+
+        assertThat(lhs.lessOrEquals(rhs), equalTo(true));
+    }
+}
