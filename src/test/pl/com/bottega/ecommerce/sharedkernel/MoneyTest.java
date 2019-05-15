@@ -39,6 +39,8 @@ public class MoneyTest {
 
     @Test
     public void getCurrencyCode() {
+        Money instance = new Money(10);
+        assertThat(instance.getCurrency(), equalTo(Money.DEFAULT_CURRENCY)
     }
 
     @Test
