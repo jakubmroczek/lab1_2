@@ -2,6 +2,8 @@ package pl.com.bottega.ecommerce.sharedkernel;
 
 import org.junit.Test;
 
+import java.util.Currency;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
@@ -40,15 +42,16 @@ public class MoneyTest {
     @Test
     public void getCurrencyCode() {
         Money instance = new Money(10);
-        assertThat(instance.getCurrency(), equalTo(Money.DEFAULT_CURRENCY)
-    }
-
-    @Test
-    public void getCurrency() {
+        assertThat(instance.getCurrencyCode(), equalTo(Money.DEFAULT_CURRENCY));
     }
 
     @Test
     public void greaterThan() {
+        Money lhs = new Money(1);
+        Money rhs = new Money(7);
+
+        assertThat(lhs.lessThan(rhs), equalTo(true));
+
     }
 
     @Test
