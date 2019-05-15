@@ -6,7 +6,6 @@ import pl.com.bottega.ecommerce.canonicalmodel.publishedlanguage.Id;
 import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductData;
 import pl.com.bottega.ecommerce.sales.domain.productscatalog.ProductType;
 import pl.com.bottega.ecommerce.sharedkernel.Money;
-import sun.dc.pr.PRError;
 
 import java.util.Date;
 
@@ -22,14 +21,6 @@ public class BaseTaxCalculationStrategyTest {
         return new RequestItem(productData, 1, new Money(100));
     }
 
-    private RequestItem getDrugRequestItem() {
-        return getRequestItem(ProductType.DRUG);
-    }
-
-    private RequestItem getFoodRequestItem() {
-        return getRequestItem(ProductType.FOOD);
-    }
-
     @Before
     public void setUp() throws Exception {
         sut = new BaseTaxCalculationStrategy();
@@ -37,7 +28,7 @@ public class BaseTaxCalculationStrategyTest {
 
     @Test
     public void shouldReturn7PercentTaxForFood() {
-        RequestItem requestItem = getFoodRequestItem();
+        RequestItem requestItem = getRequestItem(ProductType.FOOD);
 
         Money expectedTax = new Money(7);
 
@@ -46,14 +37,21 @@ public class BaseTaxCalculationStrategyTest {
 
     @Test
     public void shouldReturn5PercentTaxForDrug() {
-        RequestItem requestItem = getDrugRequestItem();
+        RequestItem requestItem = getRequestItem(ProductType.DRUG);
 
         Money expectedTax = new Money(5);
 
         assertThat(sut.calculate(requestItem).getAmount(), equalTo(expectedTax));
     }
 
+    @Test
+    public void shouldReturn23PercentTaxForStandard() {
+        RequestItem requestItem = getRequestItem(ProductType.STANDARD);
 
+        Money expectedTax = new Money(23);
+
+        assertThat(sut.calculate(requestItem).getAmount(), equalTo(expectedTax));
+    }
 
 }
 
