@@ -17,6 +17,13 @@ public class MoneyTest {
 
     @Test
     public void add() {
+        Money lhs = new Money(10);
+        Money rhs = new Money(12);
+
+        Money expectedResult = new Money(22);
+        Money result = lhs.add(rhs);
+
+        assertThat(expectedResult, equalTo(result));
     }
 
     @Test
