@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class MoneyTest {
 
     @Test
-    public void multiplyBy() {
+    public void testMultiplyBy() {
         Money instance = new Money(10);
         Money expectedResult = new Money(1_000);
 
@@ -18,7 +18,7 @@ public class MoneyTest {
     }
 
     @Test
-    public void add() {
+    public void testAdd() {
         Money lhs = new Money(10);
         Money rhs = new Money(12);
 
@@ -29,7 +29,7 @@ public class MoneyTest {
     }
 
     @Test
-    public void subtract() {
+    public void testSubtract() {
         Money lhs = new Money(15);
         Money rhs = new Money(8);
 
@@ -40,13 +40,13 @@ public class MoneyTest {
     }
 
     @Test
-    public void getCurrencyCode() {
+    public void testGetCurrencyCode() {
         Money instance = new Money(10);
         assertThat(instance.getCurrencyCode(), equalTo(Money.DEFAULT_CURRENCY.getCurrencyCode()));
     }
 
     @Test
-    public void greaterThan() {
+    public void testGreaterThan() {
         Money lhs = new Money(8);
         Money rhs = new Money(7);
 
@@ -54,7 +54,7 @@ public class MoneyTest {
     }
 
     @Test
-    public void lessThan() {
+    public void testLessThan() {
         Money lhs =  Money.ZERO;
         Money rhs = new Money(1);
 
@@ -62,7 +62,7 @@ public class MoneyTest {
     }
 
     @Test
-    public void lessOrEquals() {
+    public void testLessOrEquals() {
         Money lhs = new Money(1);
         Money rhs = new Money(1);
 
