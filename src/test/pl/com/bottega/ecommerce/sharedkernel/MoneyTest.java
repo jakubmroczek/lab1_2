@@ -42,23 +42,30 @@ public class MoneyTest {
     @Test
     public void getCurrencyCode() {
         Money instance = new Money(10);
-        assertThat(instance.getCurrencyCode(), equalTo(Money.DEFAULT_CURRENCY));
+        assertThat(instance.getCurrencyCode(), equalTo(Money.DEFAULT_CURRENCY.getCurrencyCode()));
     }
 
     @Test
     public void greaterThan() {
-        Money lhs = new Money(1);
+        Money lhs = new Money(8);
         Money rhs = new Money(7);
 
-        assertThat(lhs.lessThan(rhs), equalTo(true));
-
+        assertThat(lhs.greaterThan(rhs), equalTo(true));
     }
 
     @Test
     public void lessThan() {
+        Money lhs =  Money.ZERO;
+        Money rhs = new Money(1);
+
+        assertThat(lhs.lessThan(rhs), equalTo(true));
     }
 
     @Test
     public void lessOrEquals() {
+        Money lhs = new Money(1);
+        Money rhs = new Money(1);
+
+        assertThat(lhs.lessOrEquals(rhs), equalTo(true));
     }
 }
