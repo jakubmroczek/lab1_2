@@ -28,6 +28,13 @@ public class MoneyTest {
 
     @Test
     public void subtract() {
+        Money lhs = new Money(15);
+        Money rhs = new Money(8);
+
+        Money expectedResult = new Money(7);
+        Money result = lhs.subtract(rhs);
+
+        assertThat(expectedResult, equalTo(result));
     }
 
     @Test
